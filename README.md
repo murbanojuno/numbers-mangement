@@ -34,42 +34,45 @@ The Numbers Management Dashboard is a simple and intuitive web application that 
 
 ```
 numbers-management-app/
-├── frontend/
-│   ├── public/               # Static files (e.g., index.html)
-│   ├── src/
-│   │   ├── components/       # Reusable UI components
-│   │   ├── features/         # Feature-specific components and logic
-│   │   ├── pages/            # Application pages
-│   │   ├── api/              # RTK Query API services
-│   │   ├── assets/           # Assets for the app
-│   │   ├── routes/           # Application routes
-│   │   ├── theme/            # Material-UI theme customization
-│   │   ├── test/             # Tests
-│   │   ├─── main.tsx          # Entry point for the frontend
-│   │   └── App.tsx           # Serves as the root component of the application
-│   ├── package.json          # Frontend dependencies
-│   ├── tsconfig.json         # Frontend dependencies
-│   ├── package.json          # Frontend dependencies
-│   ├── vitest.setup         # Frontend dependencies
-│   └── vitest.config.ts      # Vite configuration
-├── backend/
-│   ├── src/
-│   │   ├── mock/             # Mock data for testing
-│   │   │   └── numbers.mock.ts
-│   │   ├── numbers/          # Numbers feature module
-│   │   │   ├── dtos/         # Data Transfer Objects
-│   │   │   ├── types/        # Type definitions
-│   │   │   ├── numbers.controller.ts # Handles API requests for numbers
-│   │   │   ├── numbers.module.ts     # Module definition for numbers
-│   │   │   ├── numbers.service.ts    # Business logic for numbers
-│   │   ├── app.module.ts             # NestJS main application module
+├── frontend/                         # Frontend of the application
+│   ├── public/                       # Static files (e.g., index.html)
+│   ├── src/                          # Source code for the frontend
+│   │   ├── components/               # Globally reusable UI components
+│   │   ├── pages/                    # High-level application pages
+│   │   ├── features/                 # Feature-specific logic and components
+│   │   │   ├── numbers/              # Numbers management feature
+│   │   │   │   ├── components/       # Reusable components for numbers feature
+│   │   │   │   ├── NumbersPage.tsx   # Page for viewing and managing numbers
+│   │   │   │   ├── RegisterPage.tsx  # Page for adding new numbers
+│   │   │   │   ├── api.ts            # RTK Query slice for numbers API
+│   │   │   │   └── types.ts          # TypeScript types for numbers
+│   │   ├── assets/                   # Images, icons, and other assets
+│   │   ├── routes/                   # Application routes
+│   │   ├── theme/                    # Material-UI theme customization
+│   │   ├── test/                     # Tests for frontend functionality
+│   │   ├── main.tsx                  # Entry point for the frontend
+│   │   └── App.tsx                   # Root component of the application
+│   ├── index.html                    # The main HTML file for the frontend
+│   ├── package.json                  # Frontend dependencies and scripts
+│   ├── tsconfig.json                 # TypeScript configuration for the frontend
+│   ├── vitest.setup                  # Configuration for Vitest testing framework
+│   └── vitest.config.ts              # Vite-specific configurations
+├── backend/                          # Backend of the application
+│   ├── src/                          # Source code for the backend
+│   │   ├── mock/                     # Mocked database for testing
+│   │   │   └── numbers.mock.ts       # Mock data for numbers
+│   │   ├── numbers/                  # Numbers feature module
+│   │   │   ├── dtos/                 # Data Transfer Objects for validation
+│   │   │   ├── types/                # Type definitions for the numbers feature
+│   │   │   ├── numbers.controller.ts # Handles incoming API requests
+│   │   │   ├── numbers.module.ts     # Module declaration for numbers feature
+│   │   │   ├── numbers.service.ts    # Business logic for numbers management
+│   │   ├── app.module.ts             # Root module for the backend
 │   │   └── main.ts                   # Entry point for the backend
-│   ├── test/                         # Tests for backend functionality
-│   │   ├── test.test.js              # Example backend test
-│   │   └── test.test.tsx             # Example TypeScript test
-│   ├── package.json                  # Backend dependencies
-│   └── tsconfig.json                 # TypeScript configuration
-└── README.md                         # Documentation
+│   ├── package.json                  # Backend dependencies and scripts
+│   └── tsconfig.json                 # TypeScript configuration for the backend
+└── README.md                         # Documentation for the project
+
 ```
 
 ---
