@@ -5,7 +5,7 @@ import NumbersPage from "../../features/numbers/NumbersPage";
 import * as numbersApi from "../../features/numbers/api";
 
 // Mock the API module
-vi.mock("../api/numbersApi", () => ({
+vi.mock("../../features/numbers/api", () => ({
   useGetNumbersQuery: vi.fn(),
   useDeleteNumberMutation: vi.fn(),
 }));
@@ -112,7 +112,7 @@ describe("NumbersPage Component", () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByText("something went wrong...")).toBeInTheDocument();
+    expect(screen.getByText("Oops, something went wrong")).toBeInTheDocument();
   });
   it("should open the filter modal, pick filters, and apply them", async () => {
     render(

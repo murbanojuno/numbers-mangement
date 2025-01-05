@@ -2,12 +2,14 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
+import { Provider } from "react-redux"; // Import Provider
+import { store } from "../../app/store"; // Import the Redux store
 import RegisterPage from "../../features/numbers/RegisterPage";
 import { act } from "react";
 
 // Mock the useAddNumberMutation hook
 const addNumberMock = vi.fn();
-vi.mock("../api/numbersApi", async (importOriginal) => {
+vi.mock("../../features/numbers/api", async (importOriginal) => {
   const actual: object = await importOriginal();
   return {
     ...actual,
@@ -15,9 +17,13 @@ vi.mock("../api/numbersApi", async (importOriginal) => {
   };
 });
 
-describe("RegisterPage Component", () => {
+describe("Register Page", () => {
+  const renderWithProvider = (component: React.ReactNode) => {
+    render(<Provider store={store}>{component}</Provider>);
+  };
+
   it("submits the form and calls addNumber mutation for a single number", async () => {
-    render(<RegisterPage />);
+    renderWithProvider(<RegisterPage />);
 
     // Simulate user interaction
     const input = screen.getByLabelText("Single Number");
@@ -33,7 +39,7 @@ describe("RegisterPage Component", () => {
   });
 
   it("submits the form and calls addNumber mutation for multiple numbers", async () => {
-    render(<RegisterPage />);
+    renderWithProvider(<RegisterPage />);
 
     // Simulate user interaction
     const input = screen.getByLabelText("Multiple Numbers");
