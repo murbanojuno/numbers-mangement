@@ -1,16 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
-
 interface TitleProps {
   title: string;
   subtitle?: string;
+  color?: string;
 }
-const Title = ({ title, subtitle }: TitleProps) => {
+const Title = ({ title, subtitle, color }: TitleProps) => {
   return (
     <Box sx={{ mb: 3 }}>
-      <Typography variant="h4">{title}</Typography>
+      <Typography color={color} variant="h4">{title}</Typography>
       {subtitle && (
-        <Typography variant="subtitle1" sx={{ fontWeight: 100 }}>
+        <Typography color={color} variant="subtitle1" sx={{ fontWeight: 100 }}>
           {subtitle}
         </Typography>
       )}

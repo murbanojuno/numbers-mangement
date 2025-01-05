@@ -11,9 +11,9 @@ import {
   Select,
   Button,
 } from "@mui/material";
-import { Number } from "../../../api/numbersApi";
 import SecondaryButton from "../../../components/UI/SecondaryButton";
 import PrimaryButton from "../../../components/UI/PrimaryButton";
+import { Number } from "../types";
 
 interface FilterModalProps {
   open: boolean;
@@ -59,12 +59,23 @@ const FilterModal: React.FC<FilterModalProps> = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose} sx={{ minWidth: "400px" }}>
-      <DialogTitle sx={{ mb: 0, pb: 0}}>Filter Options</DialogTitle>
-      <DialogContent sx={{ minWidth: "400px", padding: 2}}>
-        <Box display="flex" sx={{ mt: 2}} flexDirection="column" gap={3}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      maxWidth="sm"
+      sx={{
+        "& .MuiDialog-paper": {
+          width: "100%",
+          maxWidth: "500px",
+          margin: { xs: 1, sm: 2 }, 
+        },
+      }}
+    >
+      <DialogTitle sx={{ mb: 0, pb: 0 }}>Filter Options</DialogTitle>
+      <DialogContent sx={{ minWidth: "400px", padding: 2 }}>
+        <Box display="flex" sx={{ mx: 2, mt: 2 }} flexDirection="column" gap={3}>
           {/* Prefix Filter */}
-          <FormControl fullWidth size="small">
+          <FormControl size="small">
             <InputLabel id="filter-by-prefix">Filter by Prefix</InputLabel>
             <Select
               labelId="filter-by-prefix"
@@ -84,7 +95,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
           </FormControl>
 
           {/* Country Filter */}
-          <FormControl fullWidth size="small">
+          <FormControl size="small">
             <InputLabel id="filter-by-country">Filter by Country</InputLabel>
             <Select
               labelId="filter-by-country"
@@ -104,7 +115,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
           </FormControl>
 
           {/* Company Filter */}
-          <FormControl fullWidth size="small">
+          <FormControl size="small">
             <InputLabel id="filter-by-company">Filter by Company</InputLabel>
             <Select
               labelId="filter-by-company"
@@ -124,13 +135,9 @@ const FilterModal: React.FC<FilterModalProps> = ({
           </FormControl>
         </Box>
       </DialogContent>
-      <DialogActions>
-        <SecondaryButton onClick={handleReset}>
-          Reset
-        </SecondaryButton>
-        <PrimaryButton onClick={handleApply}>
-          Apply
-        </PrimaryButton>
+      <DialogActions sx={{ m: 2 }}>
+        <SecondaryButton onClick={handleReset}>Reset</SecondaryButton>
+        <PrimaryButton onClick={handleApply}>Apply</PrimaryButton>
       </DialogActions>
     </Dialog>
   );

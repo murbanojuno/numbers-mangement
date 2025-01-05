@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "@mui/material";
+import { Button, ButtonProps } from "@mui/material";
 
 interface SecondaryButtonProps extends ButtonProps {
     children: string | React.ReactNode;

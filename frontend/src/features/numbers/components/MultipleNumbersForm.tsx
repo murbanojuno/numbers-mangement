@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Box, TextField, Button } from "@mui/material";
-import { useAddNumberMutation } from "../../../api/numbersApi";
+import { Box, TextField } from "@mui/material";
+import { useAddNumberMutation } from "../api";
+import PrimaryButton from "../../../components/UI/PrimaryButton";
 
 interface MultipleNumbersFormData {
   multipleNumbers: string;
@@ -83,20 +84,18 @@ export const MultipleNumbersForm: React.FC<MultipleNumbersFormProps> = ({
             message: "Only digits, commas, and spaces are allowed",
           },
         })}
+        sx={{ mb: 4 }}
         error={Boolean(errors.multipleNumbers)}
         helperText={errors.multipleNumbers?.message}
       />
 
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
+        <PrimaryButton
           type="submit"
           disabled={Boolean(errors.multipleNumbers)}
-          color="error"
-          variant="contained"
-          sx={{ mt: 4 }}
         >
           Add Numbers
-        </Button>
+        </PrimaryButton>
       </Box>
     </Box>
   );

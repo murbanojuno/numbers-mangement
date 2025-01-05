@@ -1,13 +1,16 @@
 {
-    "compilerOptions": {
-      "types": ["vitest", "node"], // Add "vitest" here
-      "module": "ESNext",
-      "target": "ESNext",
-      "strict": true,
-      "jsx": "react-jsx",
-      "moduleResolution": "node",
-      "esModuleInterop": true
-    },
-    "include": ["src", "test"]
-  }
-  
+  "compilerOptions": {
+    "types": ["vitest", "node"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "strict": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": "./src", // Set base directory for absolute imports
+    "paths": {
+      "api/*": ["api/*"]
+    }
+  },
+  "include": ["src", "test"]
+}

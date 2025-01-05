@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, Typography, Snackbar, Alert } from "@mui/material";
+import { useState } from "react";
+import { Box } from "@mui/material";
 import { SingleNumberForm } from "./components/SingleNumberForm";
 import { MultipleNumbersForm } from "./components/MultipleNumbersForm";
 import SnackbarHandler from "../../components/UI/Snackbar";
@@ -17,7 +17,7 @@ export default function RegisterPage() {
     setSnackbarMessage("");
   };
 
-  // Single success/error callbacks
+  // Single success /error callbacks
   const handleSuccess = (message: string) => {
     setSnackbarSeverity("success");
     setSnackbarMessage(message);
@@ -31,7 +31,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <Box maxWidth="600px" mx="auto" mt={4}>
+    <Box maxWidth="600px" mx={{ sm: 'auto', xs: 4 }} mt={4}>
       <Title
         title="Number Onboarding Form"
         subtitle="Use this form to add one or more telephone numbers to the database.
@@ -39,10 +39,8 @@ export default function RegisterPage() {
         comma-separated numbers into the text area."
       />
 
-      {/* Single Number Form */}
       <SingleNumberForm onSuccess={handleSuccess} onError={handleError} />
 
-      {/* Multiple Numbers Form */}
       <MultipleNumbersForm onSuccess={handleSuccess} onError={handleError} />
 
       {/* Global Snackbar */}

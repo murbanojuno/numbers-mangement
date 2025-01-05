@@ -7,27 +7,28 @@ interface MainLayoutProps {
   children: ReactNode;
 }
 
+const appBarHeight = 64; // Offset for the header height
+
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-    const appBarHeight = 64;
+
   return (
     <Box
       display="flex"
-      width="100%"
       flexDirection="column"
       minHeight="100vh"
     >
-        <Header />
-        <Box
-            component="main"
-            flexGrow={1}
-            sx={{
-            mt: `${appBarHeight}px`,
-            backgroundColor: 'grey.100',
-            }}
-        >
-            {children}
-        </Box>
-        <Footer />
+      <Header />
+      <Box
+        component="main"
+        flexGrow={1} // Content area fills available space
+        sx={{
+          mt: `${appBarHeight}px`, // Prevent overlap with the header
+          backgroundColor: 'grey.100',
+        }}
+      >
+        {children}
+      </Box>
+      <Footer />
     </Box>
   );
 };

@@ -16,6 +16,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({ label, path }) => {
     <Button
       key={label}
       variant="text"
+      test-id={label}
       disableRipple
       component={Link}
       to={path}

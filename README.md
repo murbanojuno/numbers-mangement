@@ -48,7 +48,10 @@ numbers-management-app/
 │   │   ├─── main.tsx          # Entry point for the frontend
 │   │   └── App.tsx           # Serves as the root component of the application
 │   ├── package.json          # Frontend dependencies
-│   └── vite.config.ts        # Vite configuration
+│   ├── tsconfig.json         # Frontend dependencies
+│   ├── package.json          # Frontend dependencies
+│   ├── vitest.setup         # Frontend dependencies
+│   └── vitest.config.ts      # Vite configuration
 ├── backend/
 │   ├── src/
 │   │   ├── mock/             # Mock data for testing

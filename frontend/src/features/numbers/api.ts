@@ -1,21 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-export interface Number {
-  id: string;
-  number: string;
-  prefix?: string;
-  country?: string;
-  company?: string;
-  description?: string;
-}
-
-interface CreateNumberDto {
-  number: string;
-  prefix?: string;
-  country?: string;
-  company?: string;
-  description?: string;
-}
+import { CreateNumberDto, Number } from './types';
 
 export const numbersApi = createApi({
   reducerPath: 'numbersApi',

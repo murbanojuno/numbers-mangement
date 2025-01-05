@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Box, TextField, Button } from "@mui/material";
-import { useAddNumberMutation } from "../../../api/numbersApi";
+import { useAddNumberMutation } from "../api";
+import PrimaryButton from "../../../components/UI/PrimaryButton";
 
 interface SingleNumberFormData {
   singleNumber: string;
@@ -60,20 +61,18 @@ export const SingleNumberForm: React.FC<SingleNumberFormProps> = ({
             message: "Invalid format: only digits allowed",
           },
         })}
+        sx={{ mb: 4 }}
         error={Boolean(errors.singleNumber)}
         helperText={errors.singleNumber?.message}
       />
 
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
+        <PrimaryButton
           type="submit"
-          color="error"
-          variant="contained"
-          sx={{ mt: 4 }}
           disabled={Boolean(errors.singleNumber)}
         >
           Add Number
-        </Button>
+        </PrimaryButton>
       </Box>
     </Box>
   );

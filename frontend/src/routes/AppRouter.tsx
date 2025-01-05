@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MainLayout } from '../components/Layout/MainLayout';
 import HomePage from '../pages/HomePage';
-import RegisterPage from '../pages/RegisterPage/RegisterPage';
-import NumbersPage from '../pages/NumbersPage/NumbersPage';
+import RegisterPage from '../features/numbers/RegisterPage';
+import NumbersPage from '../features/numbers/NumbersPage';
 
 export const AppRouter = () => {
   return (
