@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  useGetNumbersQuery,
-  useDeleteNumberMutation,
-} from "./api";
+import { useGetNumbersQuery, useDeleteNumberMutation } from "./api";
 import {
   Box,
   Table,
@@ -40,8 +37,7 @@ import { Number } from "./types";
 
 export default function NumbersPage(): JSX.Element {
   const { data: numbers, isLoading, isError, refetch } = useGetNumbersQuery();
-  console.log('NumbersPage: useGetNumbersQuery executed');
-  console.log('maria', 'Numbers:', numbers, 'isLoading:', isLoading, 'isError:', isError);
+  
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [openFilterModal, setOpenFilterModal] = useState(false);
@@ -114,15 +110,19 @@ export default function NumbersPage(): JSX.Element {
 
   if (isLoading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
         <CircularProgress color="secondary" />
       </Box>
     );
   }
-  if (isError)
-    return <ErrorMessage />;
+  if (isError) return <ErrorMessage />;
 
-  if(!numbers || numbers.length === 0) {
+  if (!numbers || numbers.length === 0) {
     return <EmptyState />;
   }
 
@@ -188,18 +188,26 @@ export default function NumbersPage(): JSX.Element {
                 <Typography variant="body2">
                   <strong>Number:</strong> {num.number}
                 </Typography>
-                <Typography variant="body2">
-                  <strong>Prefix:</strong> {num.prefix}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Country:</strong> {num.country}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Company:</strong> {num.company}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Description:</strong> {num.description}
-                </Typography>
+                {num.prefix && (
+                  <Typography variant="body2">
+                    <strong>Prefix:</strong> {num.prefix}
+                  </Typography>
+                )}
+                {num.country && (
+                  <Typography variant="body2">
+                    <strong>Country:</strong> {num.country}
+                  </Typography>
+                )}
+                {num.company && (
+                  <Typography variant="body2">
+                    <strong>Company:</strong> {num.company}
+                  </Typography>
+                )}
+                {num.description && (
+                  <Typography variant="body2">
+                    <strong>Description:</strong> {num.description}
+                  </Typography>
+                )}
               </CardContent>
               <CardActions>
                 <IconButton
@@ -238,10 +246,10 @@ export default function NumbersPage(): JSX.Element {
                 <TableRow key={num.id}>
                   <TableCell>{num.id}</TableCell>
                   <TableCell>{num.number}</TableCell>
-                  <TableCell>{num.prefix}</TableCell>
-                  <TableCell>{num.country}</TableCell>
-                  <TableCell>{num.company}</TableCell>
-                  <TableCell>{num.description}</TableCell>
+                  <TableCell>{num.prefix || "-"}</TableCell>
+                  <TableCell>{num.country || "-"}</TableCell>
+                  <TableCell>{num.company || "-"}</TableCell>
+                  <TableCell>{num.description || "-"}</TableCell>
                   <TableCell>
                     <IconButton
                       color="primary"
