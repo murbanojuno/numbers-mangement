@@ -105,15 +105,8 @@ numbers-management-app/
    ```
 
 3. **Run the Application**
-   **Backend:**
    ```bash
    npm run start
-   ```
-
-   **Frontend:**
-   ```bash
-   cd ../frontend
-   npm run dev
    ```
 
 4. **Open in Browser**
