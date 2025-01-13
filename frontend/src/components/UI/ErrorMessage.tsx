@@ -1,8 +1,16 @@
 import { Info } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import Title from "../../../components/UI/Title";
+import Title from "./Title";
 
-const ErrorMessage: React.FC = () => {
+interface ErrorMessageProps {
+  title?: string;
+  subtitle?: string;
+}
+
+const ErrorMessage: React.FC = ({
+  title = "Oops, something went wrong",
+  subtitle = "Please try again later.",
+}: ErrorMessageProps) => {
   return (
     <Box
       display="flex"
@@ -16,14 +24,11 @@ const ErrorMessage: React.FC = () => {
         padding: 4,
         borderRadius: 4,
         m: 4,
-        textAlign: "center", // Center-align text inside Title
+        textAlign: "center",
       }}
     >
       <Info fontSize="large" />
-      <Title
-        title="Oops, something went wrong"
-        subtitle="Please try again later."
-      />
+      <Title title={title} subtitle={subtitle} />
     </Box>
   );
 };

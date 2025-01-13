@@ -31,7 +31,7 @@ import FilterModal from "./components/FilterModal";
 import EditNumberModal from "./components/EditNumberModal";
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
 import Title from "../../components/UI/Title";
-import ErrorMessage from "./components/ErrorMessage";
+import ErrorMessage from "../../components/UI/ErrorMessage";
 import EmptyState from "./components/EmptyState";
 import { Number } from "./types";
 

@@ -25,7 +25,7 @@ const EditNumberModal = ({
   onClose,
   number,
 }: EditNumberModalProps): JSX.Element => {
-  const [updateNumber] = useEditNumberMutation();
+  const [updateNumber, { isError, isLoading }] = useEditNumberMutation();
 
   // Snackbar state
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -86,7 +86,12 @@ const EditNumberModal = ({
   return (
     <>
       <Dialog open={open} onClose={onClose} fullWidth>
-        <Box padding={3} display="flex" flexDirection="column" minHeight="400px">
+        <Box
+          padding={3}
+          display="flex"
+          flexDirection="column"
+          minHeight="400px"
+        >
           <Typography variant="h6" gutterBottom>
             Edit Number
           </Typography>
@@ -141,13 +146,22 @@ const EditNumberModal = ({
                 size="small"
                 margin="normal"
               />
+
+              {isError && (
+                <Typography color="error" mt={2}>
+                  An error occurred while updating the number. Please try again.
+                </Typography>
+              )}
             </Box>
 
-            <Stack direction={"row"} spacing={2} justifyContent="flex-end" mt={2}>
-              <SecondaryButton onClick={onClose} >
-                Cancel
-              </SecondaryButton>
-              <PrimaryButton type="submit">
+            <Stack
+              direction={"row"}
+              spacing={2}
+              justifyContent="flex-end"
+              mt={2}
+            >
+              <SecondaryButton onClick={onClose}>Cancel</SecondaryButton>
+              <PrimaryButton type="submit" isLoading={isLoading}>
                 Update Number
               </PrimaryButton>
             </Stack>

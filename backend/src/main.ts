@@ -8,7 +8,7 @@ async function bootstrap() {
   // Enable CORS for local development
   app.enableCors();
 
-  // Global validation pipe
+  // Global validation pipe, reguister the pipes that are going to be used in each http reqquest
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

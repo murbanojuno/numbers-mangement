@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Alert } from "@mui/material";
 import { useAddNumberMutation } from "../api";
 import PrimaryButton from "../../../components/UI/PrimaryButton";
 
@@ -17,7 +17,7 @@ export const SingleNumberForm: React.FC<SingleNumberFormProps> = ({
   onSuccess,
   onError,
 }) => {
-  const [addNumber] = useAddNumberMutation();
+  const [addNumber, { isError, isLoading }] = useAddNumberMutation();
 
   const {
     register,
@@ -65,10 +65,16 @@ export const SingleNumberForm: React.FC<SingleNumberFormProps> = ({
         error={Boolean(errors.singleNumber)}
         helperText={errors.singleNumber?.message}
       />
+      {isError && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          Error adding number
+        </Alert>
+      )}
 
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
         <PrimaryButton
           type="submit"
+          isLoading={isLoading}
           disabled={Boolean(errors.singleNumber)}
         >
           Add Number
