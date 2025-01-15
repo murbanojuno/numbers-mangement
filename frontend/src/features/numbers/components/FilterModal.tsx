@@ -9,11 +9,12 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Button,
+  IconButton,
 } from "@mui/material";
 import SecondaryButton from "../../../components/UI/SecondaryButton";
 import PrimaryButton from "../../../components/UI/PrimaryButton";
 import { Number } from "../types";
+import { CloseOutlined } from "@mui/icons-material";
 
 interface FilterModalProps {
   open: boolean;
@@ -81,11 +82,15 @@ const FilterModal: React.FC<FilterModalProps> = ({
               labelId="filter-by-prefix"
               label="Filter by Prefix"
               value={localFilters.prefix}
+              endAdornment={
+                <IconButton size="small" sx={{ mr: 2 }} onClick={() =>  setLocalFilters({ ...localFilters, prefix: "" })}>
+                  <CloseOutlined />
+                </IconButton>
+              }
               onChange={(e) =>
                 setLocalFilters({ ...localFilters, prefix: e.target.value })
               }
             >
-              <MenuItem value="">All</MenuItem>
               {uniquePrefixes.map((prefix) => (
                 <MenuItem key={prefix} value={prefix}>
                   {prefix}
@@ -101,11 +106,15 @@ const FilterModal: React.FC<FilterModalProps> = ({
               labelId="filter-by-country"
               label="Filter by Country"
               value={localFilters.country}
+              endAdornment={
+                <IconButton size="small" sx={{ mr: 2 }} onClick={() =>  setLocalFilters({ ...localFilters, country: "" })}>
+                  <CloseOutlined />
+                </IconButton>
+              }
               onChange={(e) =>
                 setLocalFilters({ ...localFilters, country: e.target.value })
               }
             >
-              <MenuItem value="">All</MenuItem>
               {uniqueCountries.map((country) => (
                 <MenuItem key={country} value={country}>
                   {country}
@@ -121,11 +130,15 @@ const FilterModal: React.FC<FilterModalProps> = ({
               labelId="filter-by-company"
               label="Filter by Company"
               value={localFilters.company}
+              endAdornment={
+                <IconButton size="small" sx={{ mr: 2 }} onClick={() =>  setLocalFilters({ ...localFilters, company: "" })}>
+                  <CloseOutlined />
+                </IconButton>
+              }
               onChange={(e) =>
                 setLocalFilters({ ...localFilters, company: e.target.value })
               }
             >
-              <MenuItem value="">All</MenuItem>
               {uniqueCompanies.map((company) => (
                 <MenuItem key={company} value={company}>
                   {company}
