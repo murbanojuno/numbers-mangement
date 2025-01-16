@@ -36,7 +36,7 @@ import EmptyState from "./components/EmptyState";
 import { Number } from "./types";
 
 export default function NumbersPage(): JSX.Element {
-  const { data: numbers, isLoading, isError, refetch } = useGetNumbersQuery();
+  const { data: numbers, isLoading, isError } = useGetNumbersQuery();
   
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
@@ -55,12 +55,6 @@ export default function NumbersPage(): JSX.Element {
   });
   const [filteredNumbers, setFilteredNumbers] = useState<Number[]>([]);
   const [hasActiveFilters, setHasActiveFilters] = useState(false);
-
-  useEffect(() => {
-    if (refetch) {
-      refetch();
-    }
-  }, [refetch]);
 
   useEffect(() => {
     if (numbers) {
@@ -93,7 +87,6 @@ export default function NumbersPage(): JSX.Element {
     if (numberToRemove) {
       await deleteNumber(numberToRemove);
       setOpenConfirmationModal(false);
-      refetch();
     }
   };
 
